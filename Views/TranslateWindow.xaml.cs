@@ -120,7 +120,9 @@ namespace MinecraftTranslatorTool.Views {
                 try {
                     string newTranslation = newTranslations[translation.Key];
                     Console.WriteLine($"\"{translation.Key}\": \"{translation.Value}\"");
-                    defaultFile = defaultFile.Replace($"\"{translation.Key}\": \"{translation.Value}\"", $"\"{translation.Key}\": \"{newTranslation}\"");
+                    defaultFile = defaultFile.Replace(
+                        $"\"{translation.Key}\": \"{translation.Value.EscapeQuotationMarks()}\"",
+                        $"\"{translation.Key}\": \"{newTranslation.EscapeQuotationMarks()}\"");
                 } catch (KeyNotFoundException) {
                     string key = $"\n  \"{translation.Key}\": \"{translation.Value}\"";
                     int keyIndex = defaultFile.IndexOf(key);

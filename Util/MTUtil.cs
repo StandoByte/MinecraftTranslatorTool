@@ -17,5 +17,9 @@
             string result = source.Remove(index, find.Length);
             return result;
         }
+
+        public static string EscapeQuotationMarks(this string source) {
+            return source.Replace("\"", "\\\"");
+        }
     }
 }
